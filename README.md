@@ -19,6 +19,12 @@
 
 ---
 
+<p align="center">
+  <a href="https://snap-research.github.io/CineOrchestra/">
+    <img src="assets/teaser_thumb.jpg" width="90%" alt="CineOrchestra teaser — click to watch on project page">
+  </a>
+</p>
+
 ## Overview
 
 CineOrchestra is a unified video diffusion model for cinematic video generation that jointly controls **subjects**, **events**, **camera**, and **shot transitions** in a single forward pass — the first framework to do so.
@@ -29,12 +35,6 @@ The core insight: every cinematic element — a character acting, a camera pan, 
 - **2D entity-temporal cross-attention RoPE** — disambiguates per-entity conditions and routes each to its spatiotemporal target
 
 For qualitative results and interactive demos, see the [project page](https://snap-research.github.io/CineOrchestra/).
-
-<p align="center">
-  <a href="https://snap-research.github.io/CineOrchestra/">
-    <img src="assets/teaser_thumb.jpg" width="90%" alt="CineOrchestra teaser — click to watch on project page">
-  </a>
-</p>
 
 ## Updates
 
