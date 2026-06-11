@@ -31,7 +31,9 @@ The core insight: every cinematic element — a character acting, a camera pan, 
 For qualitative results and interactive demos, see the [project page](https://snap-research.github.io/CineOrchestra/).
 
 <p align="center">
-  <video src="https://github.com/snap-research/CineOrchestra/raw/main/teaser.mp4" controls muted autoplay loop width="100%"></video>
+  <a href="https://snap-research.github.io/CineOrchestra/">
+    <img src="assets/teaser_thumb.jpg" width="90%" alt="CineOrchestra teaser — click to watch on project page">
+  </a>
 </p>
 
 ## Updates
