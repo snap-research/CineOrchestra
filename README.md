@@ -1,62 +1,44 @@
 # CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation
 
-**[NeurIPS 2026]** &nbsp;|&nbsp; [📄 Paper](#) &nbsp;|&nbsp; [🌐 Project Page](https://cineorchestra.github.io) &nbsp;|&nbsp; [📦 Data](#benchmark-release)
+<p align="center">
+  <a href="#">📄 Paper (coming soon)</a> &nbsp;|&nbsp;
+  <a href="https://cineorchestra.github.io">🌐 Project Page</a>
+</p>
 
----
-
-[Sharath Girish](https://sharathgirish.com)<sup>1*</sup>, [Tsai-Shien Chen](#)<sup>1,2*</sup>, [Zhikang Dong](#)<sup>1</sup>, [Mukesh Singhal](#)<sup>2</sup>, [Hao Chen](#)<sup>1</sup>, [Sergey Tulyakov](#)<sup>1</sup>, [Aliaksandr Siarohin](#)<sup>1</sup>
-
-<sup>1</sup>Snap Inc. &nbsp; <sup>2</sup>UC Merced &nbsp; &nbsp; <sup>*</sup>Equal contribution
+<p align="center">
+  <a href="https://sharathgirish.com">Sharath Girish</a><sup>1*</sup>&nbsp;
+  <a href="#">Tsai-Shien Chen</a><sup>1,2*</sup>&nbsp;
+  <a href="#">Zhikang Dong</a><sup>1</sup>&nbsp;
+  <a href="#">Mukesh Singhal</a><sup>2</sup>&nbsp;
+  <a href="#">Hao Chen</a><sup>1</sup>&nbsp;
+  <a href="#">Sergey Tulyakov</a><sup>1</sup>&nbsp;
+  <a href="#">Aliaksandr Siarohin</a><sup>1</sup>
+  <br>
+  <sup>1</sup>Snap Inc. &nbsp; <sup>2</sup>UC Merced &nbsp; &nbsp; <sup>*</sup>Equal contribution
+</p>
 
 ---
 
 ## Overview
 
-Cinematic video depicts multiple subjects acting at specific moments, captured with deliberate camera movement, and stitched by shot transitions — a level of compositional control current text-to-video models can't deliver. Prior work addresses each axis in isolation: multi-reference personalization, temporal control, multi-shot synthesis, or camera control. No existing framework jointly handles all four.
+CineOrchestra is a unified video diffusion model for cinematic video generation that jointly controls **subjects**, **events**, **camera**, and **shot transitions** in a single forward pass — the first framework to do so.
 
-**CineOrchestra** unifies these axes in a single video diffusion model. The core insight: subjects, events, cameras, and transitions all share the same structure — *an entity acting over a temporal interval*. We represent every cinematic element as a structured tuple `(start_time, end_time, prompt, [reference_image])` under a common entity-centric primitive.
+The core insight: every cinematic element — a character acting, a camera pan, a hard cut — is an entity acting over a temporal interval. We represent all of them with one shared primitive: `(start_time, end_time, prompt, [reference_image])`, attaching a special `{camera}` or `{transition}` tag where needed. This reduces the architectural problem to positional encoding, solved by two coordinated RoPEs:
 
-This reduces the architectural challenge to a single positional encoding problem, solved by two coordinated RoPEs:
-- **Interval-sampled temporal RoPE** — duration-invariant attention across events spanning 0.1s hard cuts to 10s camera moves
-- **2D entity-temporal cross-attention RoPE** — disambiguates per-entity conditions and routes each to its target spatiotemporal region
+- **Interval-sampled temporal RoPE** — consistent attention across events ranging from 0.1s cuts to 10s camera moves
+- **2D entity-temporal cross-attention RoPE** — disambiguates per-entity conditions and routes each to its spatiotemporal target
 
-On two new benchmarks (**CineBench** and **CineBenchSyn**), CineOrchestra outperforms six per-axis specialists on dense caption following and shot-transition timing.
+For qualitative results and interactive demos, see the [project page](https://cineorchestra.github.io).
 
-## Benchmark Release
+## Updates
 
-We introduce two benchmarks for cinematic video generation evaluation:
+- **[Jun 2026]** Project page released.
 
-| Benchmark | Clips | Entities | Events | References | Source |
-|-----------|-------|----------|--------|------------|--------|
-| CineBench | 512 | 3.2k | 6.9k | 1.5k | Movie/TV clips |
-| CineBenchSyn | 512 | 3.3k | 6.4k | 1.7k | LLM prompts + synthetic refs |
+## Release Plan
 
-**CineBenchSyn** is fully synthetic (LLM-generated prompts, Qwen-Image-generated reference images) targeting under-represented edge cases, and is being released for the community.
-
-### Evaluation Metrics
-
-- **M-DINO** — Masked DINO similarity for subject identity consistency
-- **M-CLIP** — Masked CLIP similarity for global caption following
-- **ViCLIP** — Dense caption following across subject, scene, camera, and transition categories
-- **Transition Recall** — Qwen2.5-VL-7B judge scoring shot-transition timing within a tolerance window
-
-## Roadmap
-
-- [ ] **CineBenchSyn dataset** — prompts, reference images, and entity-centric annotations
-- [ ] **Benchmark evaluation code** — metric computation (M-DINO, M-CLIP, ViCLIP, transition recall)
-
-## Citation
-
-```bibtex
-@inproceedings{girish2026cineorchestra,
-  title     = {CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation},
-  author    = {Girish, Sharath and Chen, Tsai-Shien and Dong, Zhikang and Singhal, Mukesh and
-               Chen, Hao and Tulyakov, Sergey and Siarohin, Aliaksandr},
-  booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2026}
-}
-```
+- [ ] **CineBenchSyn** benchmark data
+- [ ] Benchmark evaluation code
 
 ## License
 
-See [LICENSE](LICENSE).
+This repository is released under the [MIT License](LICENSE).
