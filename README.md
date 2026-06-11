@@ -1,4 +1,4 @@
-# CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation
+# <img src="favicon.svg" width="32" height="32" style="vertical-align:middle"> CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation
 
 <p align="center">
   <a href="#">📄 Paper (coming soon)</a> &nbsp;|&nbsp;
@@ -29,6 +29,10 @@ The core insight: every cinematic element — a character acting, a camera pan, 
 - **2D entity-temporal cross-attention RoPE** — disambiguates per-entity conditions and routes each to its spatiotemporal target
 
 For qualitative results and interactive demos, see the [project page](https://snap-research.github.io/CineOrchestra/).
+
+<p align="center">
+  <video src="teaser.mp4" controls width="100%"></video>
+</p>
 
 ## Updates
 

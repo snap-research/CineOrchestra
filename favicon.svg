@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <clipPath id="fav-clap">
+      <rect x="2" y="2" width="28" height="7.5" rx="2"/>
+    </clipPath>
+  </defs>
+  <!-- Clapper bar -->
+  <rect x="2" y="2" width="28" height="7.5" rx="2" fill="#7c3aed"/>
+  <!-- Diagonal white stripes -->
+  <g clip-path="url(#fav-clap)" fill="white" fill-opacity="0.35">
+    <polygon points="9,2 13,2 5.5,9.5 1.5,9.5"/>
+    <polygon points="17,2 21,2 13.5,9.5 9.5,9.5"/>
+    <polygon points="25,2 29,2 21.5,9.5 17.5,9.5"/>
+  </g>
+  <!-- Board body -->
+  <rect x="2" y="11.5" width="28" height="18.5" rx="2.5" fill="#1a0533" stroke="#7c3aed" stroke-width="1.5"/>
+  <!-- Entity timeline: 3 colored bars at different positions -->
+  <rect x="5"  y="14"   width="13" height="2.2" rx="0.6" fill="#60a5fa"/>
+  <rect x="11" y="17.5" width="14" height="2.2" rx="0.6" fill="#c084fc"/>
+  <rect x="6"  y="21"   width="14" height="2.2" rx="0.6" fill="#fb923c"/>
+  <!-- Time arrow -->
+  <line x1="5" y1="26" x2="25.5" y2="26" stroke="#c084fc" stroke-opacity="0.85" stroke-width="1.0" stroke-linecap="round"/>
+  <polygon points="26,26 24.2,25.0 24.2,27.0" fill="#c084fc" fill-opacity="0.85"/>
+</svg>
