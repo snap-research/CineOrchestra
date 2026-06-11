@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>CineOrchestra</title>
+  <link rel="icon" type="image/png" href="assets/cineorchestra.png">
+  <link rel="stylesheet" href="style.css?v=1781201270" />
+</head>
+<body>
+  <header class="page-header">
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light / dark theme">
+      <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12.74 2.04a10 10 0 1 0 9.22 9.22 1 1 0 0 0-1.49-.94 7.5 7.5 0 0 1-9.79-9.79 1 1 0 0 0-.94-1.49 10 10 0 0 0-.01.01z"/>
+      </svg>
+      <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zM4 13H2a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2zm18 0h-2a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2zM12 5a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1zM5.64 6.46l-1.42-1.42a1 1 0 0 1 1.42-1.42L7.05 5.05A1 1 0 0 1 5.64 6.46zm12.72 0a1 1 0 0 1 0-1.41l1.42-1.42a1 1 0 0 1 1.42 1.42l-1.42 1.41a1 1 0 0 1-1.42 0zM5.64 17.54a1 1 0 0 1 1.41 1.41l-1.41 1.42a1 1 0 1 1-1.42-1.42l1.42-1.41zm12.72 0l1.42 1.41a1 1 0 1 1-1.42 1.42l-1.41-1.42a1 1 0 0 1 1.41-1.41z"/>
+      </svg>
+    </button>
+    <p class="kicker">Cinematic Video Generation</p>
+    <div class="paper-logo" aria-hidden="true">
+      <img src="assets/cineorchestra.png" alt="" />
+    </div>
+    <h1 id="paper-title">
+      <span class="title-brand">CineOrchestra</span>:
+      Unified Entity-Centric Conditioning for Cinematic Video Generation
+    </h1>
+
+    <div class="authors">
+      <div class="authors-row">
+        <span class="author"><a href="https://sharath-girish.github.io/" target="_blank" rel="noopener">Sharath Girish</a><sup>1,&#42;</sup></span>
+        <span class="author"><a href="https://tsaishien-chen.github.io/" target="_blank" rel="noopener">Tsai-Shien Chen</a><sup>1,2,&#42;</sup></span>
+        <span class="author"><a href="https://www.linkedin.com/in/zhikang-dong" target="_blank" rel="noopener">Zhikang Dong</a><sup>1</sup></span>
+        <span class="author"><a href="https://cloudlab.ucmerced.edu/people/~mukesh" target="_blank" rel="noopener">Mukesh Singhal</a><sup>2</sup></span>
+      </div>
+      <div class="authors-row authors-row-senior">
+        <span class="author senior"><a href="https://scholar.google.com/citations?user=3YpwwsYAAAAJ&hl=en" target="_blank" rel="noopener">Hao Chen</a><sup>1</sup></span>
+        <span class="author senior"><a href="https://stulyakov.com/" target="_blank" rel="noopener">Sergey Tulyakov</a><sup>1</sup></span>
+        <span class="author senior"><a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/" target="_blank" rel="noopener">Aliaksandr Siarohin</a><sup>1</sup></span>
+      </div>
+      <p class="affiliations contrib-only">
+        <span class="contrib"><sup>&#42;</sup>Equal contribution</span>
+      </p>
+    </div>
+
+    <div class="affil-logos" aria-label="Affiliations">
+      <a class="affil-logo" href="https://research.snap.com" target="_blank" rel="noopener" aria-label="Snap Research">
+        <span class="affil-mark affil-mark--snap" aria-hidden="true">
+          <img src="assets/snap-research-logo.svg" alt="" />
+        </span>
+        <span class="affil-name">Snap Research<sup>1</sup></span>
+      </a>
+      <span class="affil-divider" aria-hidden="true"></span>
+      <a class="affil-logo" href="https://www.ucmerced.edu" target="_blank" rel="noopener" aria-label="UC Merced">
+        <span class="affil-mark affil-mark--merced" aria-hidden="true">
+          <img src="assets/ucmerced.png" alt="" />
+        </span>
+        <span class="affil-name">UC Merced<sup>2</sup></span>
+      </a>
+    </div>
+
+    <div class="paper-buttons">
+      <a id="arxiv-link" class="paper-btn" href="#" target="_blank" rel="noopener">
+        <svg class="paper-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/>
+        </svg>
+        <span>arXiv</span>
+      </a>
+    </div>
+
+    <p class="overview">
+      A single video diffusion model for <strong>cinematic generation</strong>
+      with <strong>joint, fine-grained conditioning</strong> across every
+      ingredient: <strong>per-entity reference images</strong>, <strong>timed
+      dense-caption events</strong>, <strong>camera angles and shot motion</strong>,
+      and <strong>complex multi-shot transitions</strong>.
+    </p>
+  </header>
+
+  <main>
+    <section class="teaser-section" aria-label="Teaser video">
+      <div class="teaser-frame">
+        <video
+          class="teaser-video"
+          src="data/teaser.mp4"
+          autoplay muted loop playsinline preload="metadata"
+          controls
+        ></video>
+      </div>
+      <p class="teaser-credit">
+        🔊 click the speaker icon to unmute &middot;
+        <em>Music and sound effects added in post-production.</em>
+      </p>
+      <details class="teaser-credits-details">
+        <summary>audio credits</summary>
+        <ul class="teaser-credits-list">
+          <li>
+            <strong>"Spaghetti Western Theme"</strong> — Markus Lindner
+            (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>,
+            via <a href="https://archive.org/details/markuslindner-spaghettiwestern" target="_blank" rel="noopener">archive.org</a>)
+          </li>
+          <li>
+            <strong>"EDM Detection Mode"</strong> — Kevin MacLeod
+            (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>,
+            via <a href="https://incompetech.com" target="_blank" rel="noopener">incompetech.com</a>)
+          </li>
+          <li>
+            Scene sound effects via <a href="https://freesound.org/" target="_blank" rel="noopener">freesound.org</a>
+            (<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a>)
+          </li>
+          <li>
+            Train sound effect:
+            <a href="https://www.youtube.com/watch?v=yR1pEk16Bjg" target="_blank" rel="noopener">"Running Train sound effect"</a> by ABHIGNAN
+            (<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>)
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="section">
+      <h2><span class="h-flair">🎬</span> Entity-level Cinematic Control</h2>
+      <p class="section-desc">
+        Each entry pairs the generated video with its entity-centric conditioning prompt.
+        The timeline below each video shows per-entity <strong>dense-caption bars</strong>
+        (one row per entity), a shared <strong>playhead</strong> that tracks video progress,
+        and <strong>pop-up captions</strong> that appear as each event plays.
+        Click any bar or track region to seek to that moment.
+      </p>
+
+      <div id="carousel" class="carousel" tabindex="0" aria-label="Results carousel">
+        <div class="carousel-top">
+          <div class="dots" id="carousel-dots" role="tablist"></div>
+          <div class="carousel-top-actions">
+            <button id="play-all" class="play-all is-paused" type="button" aria-label="Play all videos in this slide">
+              <svg class="icon icon-play" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 3 L4 13 L13 8 Z" fill="currentColor"/></svg>
+              <svg class="icon icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 3 H7 V13 H4 Z M9 3 H12 V13 H9 Z" fill="currentColor"/></svg>
+              <span class="play-all-label">Play all</span>
+            </button>
+            <button id="reset-all" class="reset-all" type="button" aria-label="Reset all videos in this slide to the start">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 8 a5 5 0 1 0 1.5 -3.5" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 3 L3 6 L6 6" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="reset-all-label">Reset all</span>
+            </button>
+          </div>
+        </div>
+        <div class="carousel-stage">
+          <button class="nav nav-prev" aria-label="Previous slide" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="slides-viewport">
+            <div class="slides-track" id="slides-track"></div>
+          </div>
+          <button class="nav nav-next" aria-label="Next slide" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- More results — visible below the carousel -->
+      <div class="more-results-bar">
+        <button id="more-results-toggle" class="more-results-btn" type="button" aria-expanded="false">
+          <span class="more-results-label">More results</span>
+          <svg class="more-results-chevron" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 6 L8 10 L12 6" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div id="more-results-section" class="more-results-section" hidden>
+        <div class="more-results-actions">
+          <button id="more-play-all" class="play-all is-paused" type="button" aria-label="Play all videos in the more-results grid">
+            <svg class="icon icon-play" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4 3 L4 13 L13 8 Z" fill="currentColor"/></svg>
+            <svg class="icon icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4 3 H7 V13 H4 Z M9 3 H12 V13 H9 Z" fill="currentColor"/></svg>
+            <span class="play-all-label">Play all</span>
+          </button>
+          <button id="more-reset-all" class="reset-all" type="button" aria-label="Reset all videos in the more-results grid to the start">
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 8 a5 5 0 1 0 1.5 -3.5" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 3 L3 6 L6 6" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="reset-all-label">Reset all</span>
+          </button>
+        </div>
+        <div id="more-results-grid" class="more-results-grid"></div>
+      </div>
+    </section>
+
+    <section class="section abstract-section">
+      <h2><span class="h-flair">📜</span> Abstract</h2>
+      <p class="abstract-body">
+        Cinematic video depicts multiple subjects acting or interacting at
+        specific moments, captured with deliberate camera movement, and
+        stitched together by shot transitions. Together, these elements
+        demand a level of fine-grained control beyond current text-to-video
+        models. Existing work addresses each axis in isolation: multi-subject
+        personalization, temporal control, multi-shot synthesis, or camera
+        control; no prior framework jointly integrates all four. We present
+        <strong>CineOrchestra</strong>, a unified video diffusion model that
+        controls subjects, events, cameras, and shot transitions
+        simultaneously. Our key insight is that these heterogeneous
+        cinematic elements share a fundamental structure:
+        <em>each is an entity acting over a specific temporal interval</em>,
+        which can therefore all be expressed through one shared structure of
+        entity-centric conditioning primitives, augmented with reference
+        images for visual entities. This formulation reduces the
+        architectural challenge to a single positional-encoding problem,
+        which we solve with two coordinated rotary embeddings: (i) an
+        interval-sampled <strong>temporal RoPE</strong> that yields
+        consistent attention behavior across events of dramatically varying
+        duration, and (ii) a <strong>2D entity-temporal cross-attention RoPE</strong>
+        that disambiguates per-entity conditions and routes each to its
+        corresponding spatiotemporal region. On two new benchmarks,
+        CineOrchestra outperforms six per-axis specialists on dense caption
+        following and shot-transition timing.
+      </p>
+    </section>
+
+    <section class="section comparison-section">
+      <h2><span class="h-flair">⚖️</span> Baseline Comparisons</h2>
+      <p class="section-desc">
+        CineOrchestra vs. prior methods — CineTrans, MultiShotMaster, Phantom, ShotStream,
+        and VACE — on the same entity-centric prompt. Our result is highlighted with a
+        <strong style="color:var(--accent)">purple border</strong>. The timeline below each
+        entry shows all entity tracks. Click any bar to seek all videos simultaneously.
+      </p>
+
+      <div id="cmp-carousel" class="carousel cmp-carousel" tabindex="0"
+           aria-label="Baseline comparisons carousel">
+        <div class="carousel-top">
+          <div class="dots" id="cmp-dots" role="tablist"></div>
+          <div class="carousel-top-actions">
+            <button id="cmp-play-all" class="play-all is-paused" type="button"
+                    aria-label="Play all videos in this comparison">
+              <svg class="icon icon-play" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 3 L4 13 L13 8 Z" fill="currentColor"/></svg>
+              <svg class="icon icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 3 H7 V13 H4 Z M9 3 H12 V13 H9 Z" fill="currentColor"/></svg>
+              <span class="play-all-label">Play all</span>
+            </button>
+            <button id="cmp-reset-all" class="reset-all" type="button" aria-label="Reset all videos in this comparison to the start">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 8 a5 5 0 1 0 1.5 -3.5" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 3 L3 6 L6 6" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="reset-all-label">Reset all</span>
+            </button>
+          </div>
+        </div>
+        <div class="carousel-stage">
+          <button class="nav nav-prev" aria-label="Previous comparison" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="slides-viewport">
+            <div class="slides-track" id="cmp-slides-track"></div>
+          </div>
+          <button class="nav nav-next" aria-label="Next comparison" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- More comparisons — compact cards with modal pop-up -->
+      <div class="more-results-bar">
+        <button id="more-cmp-toggle" class="more-results-btn" type="button" aria-expanded="false">
+          <span class="more-results-label">More comparisons</span>
+          <svg class="more-results-chevron" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 6 L8 10 L12 6" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div id="more-cmp-section" class="more-results-section" hidden>
+        <div class="more-results-actions">
+          <button id="more-cmp-play-all" class="play-all is-paused" type="button" aria-label="Play all videos in the more-comparisons grid">
+            <svg class="icon icon-play" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4 3 L4 13 L13 8 Z" fill="currentColor"/></svg>
+            <svg class="icon icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4 3 H7 V13 H4 Z M9 3 H12 V13 H9 Z" fill="currentColor"/></svg>
+            <span class="play-all-label">Play all</span>
+          </button>
+          <button id="more-cmp-reset-all" class="reset-all" type="button" aria-label="Reset all videos in the more-comparisons grid to the start">
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 8 a5 5 0 1 0 1.5 -3.5" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 3 L3 6 L6 6" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="reset-all-label">Reset all</span>
+          </button>
+        </div>
+        <div id="more-cmp-grid" class="more-results-grid"></div>
+      </div>
+    </section>
+
+    <section class="section arch-section">
+      <h2><span class="h-flair">🎞️</span> Model Architecture</h2>
+      <p class="section-desc">
+        A single diffusion transformer ingests every cinematic ingredient
+        through one shared <em>entity-centric</em> structure. Per-entity
+        reference images, per-entity timed dense-caption events, the
+        <strong>{camera}</strong> track, and the <strong>{transition}</strong>
+        track flow into the same conditioning stream, then get routed to
+        their spatiotemporal targets by two coordinated rotary embeddings:
+        an <strong>interval-sampled temporal RoPE</strong> that keeps
+        attention consistent across events with wildly varying duration, and
+        a <strong>2D entity-temporal cross-attention RoPE</strong> that
+        disambiguates which entity each condition belongs to.
+      </p>
+      <figure class="arch-figure">
+        <img src="assets/architecture_v2.png?v=1781201270" alt="CineOrchestra architecture and rotary-embedding design" loading="lazy" />
+      </figure>
+    </section>
+
+    <section class="section arch-section">
+      <h2><span class="h-flair">📊</span> User Study</h2>
+      <p class="section-desc">
+        Head-to-head human evaluation on 512 prompts, scored across eight
+        independent dimensions. Each radar panel plots CineOrchestra's
+        preference rate against one baseline among <em>disagreeing</em>
+        votes (ties excluded); the dashed circle marks the 50% tie line —
+        anywhere outside it favours CineOrchestra. We are
+        <strong>preferred on every entity-, text-, and structure-related
+        dimension</strong> — subject identity, global-description
+        following, dense-caption following, and shot / camera structure —
+        <strong>against all six baselines</strong>. Perceptual axes (raw
+        motion, overall quality, scene look) come out roughly tied with
+        the strongest perceptual specialist.
+      </p>
+      <figure class="arch-figure arch-figure--narrow">
+        <img src="assets/user_study_v2.png" alt="User study preference scores" loading="lazy" />
+      </figure>
+    </section>
+
+    <section class="section">
+      <h2><span class="h-flair">⏱️</span> Long-form Generation</h2>
+      <p class="section-desc">
+        The model is trained on <strong>10-second</strong> clips, yet at inference it
+        <em>generalises</em> directly to <strong>40-second</strong> sequences —
+        4× longer than anything it ever saw at training time.
+        Entity identity, scene grounding, camera primitives, and dense per-event timing
+        all hold across the extended horizon with no fine-tuning or temporal extension trick.
+        The timeline shows the <em>full</em> 40 s event schedule; axis ticks are spaced
+        every 5 seconds.
+      </p>
+
+      <div id="long-carousel" class="carousel" tabindex="0" aria-label="Long videos carousel">
+        <div class="carousel-top">
+          <div class="dots" id="long-dots" role="tablist"></div>
+          <div class="carousel-top-actions">
+            <button id="long-play-all" class="play-all is-paused" type="button" aria-label="Play all long videos in this slide">
+              <svg class="icon icon-play" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 3 L4 13 L13 8 Z" fill="currentColor"/></svg>
+              <svg class="icon icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 3 H7 V13 H4 Z M9 3 H12 V13 H9 Z" fill="currentColor"/></svg>
+              <span class="play-all-label">Play all</span>
+            </button>
+            <button id="long-reset-all" class="reset-all" type="button" aria-label="Reset all long videos in this slide to the start">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 8 a5 5 0 1 0 1.5 -3.5" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 3 L3 6 L6 6" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="reset-all-label">Reset all</span>
+            </button>
+          </div>
+        </div>
+        <div class="carousel-stage">
+          <button class="nav nav-prev" aria-label="Previous slide" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="slides-viewport">
+            <div class="slides-track" id="long-slides-track"></div>
+          </div>
+          <button class="nav nav-next" aria-label="Next slide" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- More-results detail modal — populated by openMrModal() in app.js -->
+  <div id="mr-modal" class="mr-modal" hidden role="dialog" aria-modal="true" aria-label="Result detail">
+    <div class="mr-modal-backdrop"></div>
+    <div class="mr-modal-box" tabindex="-1">
+      <button id="mr-modal-close" class="mr-modal-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M3 3 L13 13 M13 3 L3 13" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <p class="mr-modal-hint">Click the timeline to seek &middot; Press <kbd>Esc</kbd> to close</p>
+      <div id="mr-modal-content" class="mr-modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="page-footer"></footer>
+
+  <!-- Inlined site data so opening index.html via file:// works. -->
+  <script src="manifest.js?v=1781201270"></script>
+  <script src="app.js?v=1781201270"></script>
+</body>
+</html>
