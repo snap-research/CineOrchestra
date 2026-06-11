@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#">📄 Paper (coming soon)</a> &nbsp;|&nbsp;
-  <a href="https://cineorchestra.github.io">🌐 Project Page</a>
+  <a href="https://snap-research.github.io/CineOrchestra/">🌐 Project Page</a>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@ The core insight: every cinematic element — a character acting, a camera pan, 
 - **Interval-sampled temporal RoPE** — consistent attention across events ranging from 0.1s cuts to 10s camera moves
 - **2D entity-temporal cross-attention RoPE** — disambiguates per-entity conditions and routes each to its spatiotemporal target
 
-For qualitative results and interactive demos, see the [project page](https://cineorchestra.github.io).
+For qualitative results and interactive demos, see the [project page](https://snap-research.github.io/CineOrchestra/).
 
 ## Updates
 
