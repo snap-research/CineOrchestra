@@ -1,4 +1,4 @@
-# <img src="favicon.svg" width="32" height="32" style="vertical-align:middle"> CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation
+# <img src="assets/cineorchestra.png" width="36" height="36" style="vertical-align:middle"> CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation
 
 <p align="center">
   <a href="#">📄 Paper (coming soon)</a> &nbsp;|&nbsp;
@@ -31,7 +31,7 @@ The core insight: every cinematic element — a character acting, a camera pan, 
 For qualitative results and interactive demos, see the [project page](https://snap-research.github.io/CineOrchestra/).
 
 <p align="center">
-  <video src="teaser.mp4" controls width="100%"></video>
+  <video src="https://github.com/snap-research/CineOrchestra/raw/main/teaser.mp4" controls muted autoplay loop width="100%"></video>
 </p>
 
 ## Updates
