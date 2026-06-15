@@ -1,7 +1,7 @@
 # <img src="assets/cineorchestra.png" width="36" height="36" style="vertical-align:middle"> CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation
 
 <p align="center">
-  <a href="#">📄 Paper (coming soon)</a> &nbsp;|&nbsp;
+  <a href="http://arxiv.org/abs/2606.13768">📄 Paper</a> &nbsp;|&nbsp;
   <a href="https://snap-research.github.io/CineOrchestra/">🌐 Project Page</a>
 </p>
 
