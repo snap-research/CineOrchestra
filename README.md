@@ -38,12 +38,85 @@ For qualitative results and interactive demos, see the [project page](https://sn
 
 ## Updates
 
+- **[Jun 2026]** CineBenchSyn benchmark data and evaluation code released.
 - **[Jun 2026]** Project page released.
 
 ## Release Plan
 
-- [ ] **CineBenchSyn** benchmark data
-- [ ] Benchmark evaluation code
+- [x] **CineBenchSyn** benchmark data — [`sharathgirish/CineBenchSyn`](https://huggingface.co/datasets/sharathgirish/CineBenchSyn)
+- [x] Benchmark evaluation code — see [Benchmark Evaluation](#benchmark-evaluation) (`eval/`)
+
+## Benchmark Evaluation
+
+The `eval/` directory contains a self-contained pipeline that scores generated videos against the
+**CineBenchSyn** conditioning along three axes: subject identity, dense-caption following, and
+shot-transition timing.
+
+### 1. Environment
+
+```bash
+conda env create -f eval/environment.yml
+conda activate cinebenchsyn
+```
+
+`ffmpeg` is included in the environment. All metric models — [Grounding DINO](https://huggingface.co/IDEA-Research/grounding-dino-base),
+[SAM 2](https://huggingface.co/facebook/sam2-hiera-large), [DINOv2](https://huggingface.co/facebook/dinov2-base),
+CLIP, [ViCLIP](https://huggingface.co/OpenGVLab/ViCLIP-B-16-hf), and
+[Qwen2.5-VL](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct) — download automatically from the
+Hugging Face Hub on first use.
+
+### 2. Get the benchmark data
+
+```python
+from huggingface_hub import snapshot_download
+data = snapshot_download("sharathgirish/CineBenchSyn", repo_type="dataset")
+# data/annotations/<id>_ultra_dense.json   — per-scenario conditioning
+# data/reference_images/<id>_ref_image_NN_<entity>.png
+```
+
+### 3. Generate your videos
+
+Generate one video per scenario with your model. The pipeline expects a directory of `<NNNNN>.mp4`
+files, **1-indexed**, where video `<NNNNN>.mp4` corresponds to annotation index `<NNNNN − 1>` (so
+`00001.mp4` ↔ `00000_ultra_dense.json`):
+
+```
+my_videos/
+  00001.mp4
+  00002.mp4
+  ...
+  00512.mp4
+```
+
+### 4. Run the metrics
+
+```bash
+bash eval/run_eval.sh \
+  --videos-dir   my_videos \
+  --prompts-dir  "$data/annotations" \
+  --refs-dir     "$data/reference_images" \
+  --output-dir   results_my_model \
+  --name         MyModel \
+  --stages       extract_masks,compute_grounding,compute_vlm,compute_viclip,aggregate
+```
+
+Stages run in the order below; select a subset with `--stages`:
+
+| Stage | Metric |
+|---|---|
+| `extract_masks` | Grounds + segments each entity in every video (Grounding DINO + SAM 2) |
+| `compute_grounding` | DINO subject identity, CLIP / masked-CLIP caption alignment |
+| `compute_vlm` | Qwen2.5-VL shot-transition-timing recall |
+| `compute_viclip` | ViCLIP dense-caption following (scene / camera / transition) |
+| `aggregate` | Collects per-run scores into `aggregate_metrics.json` |
+
+Final scores are written to `<output-dir>/aggregate_metrics.json`.
+
+The pipeline runs on a single GPU (or CPU) by default. For multi-GPU, launch the per-stage scripts in
+`eval/` with `torchrun --nproc_per_node=N` (work is split across ranks via a filesystem barrier; no
+NCCL required). SAM 2 mask *propagation* is slow and is skipped by default (`--skip_mask_tracking`)
+— enable it only if you need the masked-region metric variants. The subject-identity metric that
+relies on masked reference images is not part of this release.
 
 ## License
 
