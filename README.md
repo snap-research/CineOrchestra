@@ -115,8 +115,7 @@ Final scores are written to `<output-dir>/aggregate_metrics.json`.
 The pipeline runs on a single GPU (or CPU) by default. For multi-GPU, launch the per-stage scripts in
 `eval/` with `torchrun --nproc_per_node=N` (work is split across ranks via a filesystem barrier; no
 NCCL required). SAM 2 mask *propagation* is slow and is skipped by default (`--skip_mask_tracking`)
-— enable it only if you need the masked-region metric variants. The subject-identity metric that
-relies on masked reference images is not part of this release.
+— enable it only if you need the masked-region metric variants.
 
 ## License
 
