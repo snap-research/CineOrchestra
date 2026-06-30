@@ -13,6 +13,7 @@
 name: cinebenchsyn
 channels:
   - conda-forge
+  - nodefaults
 dependencies:
   - python=3.12
   - ffmpeg
